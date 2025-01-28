@@ -1,14 +1,20 @@
+// src/App.tsx
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import UsersList from './pages/UsersList'
+import UserDetails from './pages/UserDetails'
 
-function App() {
-
-
+const App: React.FC = () => {
   return (
-    
-      <div className="h-10 w-10 bg-red-700">
-        <h1 className="text-5xl font-bold text-center">Hello World</h1>
-      </div>
+    <BrowserRouter>
+      <Routes>
+        {/* Show the paginated user list at the root URL */}
+        <Route path="/" element={<UsersList />} />
 
-   
+        {/* Optional detail page for viewing a single user by ID */}
+        <Route path="/users/:id" element={<UserDetails />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
